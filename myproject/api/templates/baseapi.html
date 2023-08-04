@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto API Rest</title>
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+  <style>
+    .dataTables_wrapper .dataTables_paginate {
+    display: none !important;
+    }
+
+    .dataTables_wrapper .dataTables_info {
+    display: none !important;
+    }
+
+    .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_length {
+      padding-bottom: 10px !important;
+    }
+    .dataTables_wrapper .dataTables_length {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <div class="nav navbar-nav">
+          <a class="nav-item nav-link active" href="{% url 'helloUPDS' %}" aria-current="page">Proyecto Django</a>
+          <a class="nav-item nav-link" href="{% url 'projectIndex' %}">Porftolio</a>
+          <a class="nav-item nav-link" href="{% url 'api' %}">API</a>
+      </div>
+    </nav>
+    {% block page_content %}{% endblock %}
+  </main>
+  <footer>
+    <nav class="navbar navbar-expand navbar-light bg-light justify-content-center">
+      <ul class="nav navbar-nav">
+        <a class="nav-link active">&copy; Derechos Reservados UPDS<span class="visually-hidden"></span></a>
+        <a class="nav-link active text-primary" href="#" aria-current="page">Volver arriba<span class="visually-hidden"></span></a>
+      </ul>
+    </nav>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#miTabla').DataTable({
+        "language": {
+          "search": "Buscar: "
+        },
+        // Opciones de configuración
+        "searching": true, // Activa el filtro de búsqueda en todas las columnas
+        "columns": [
+          { "searchable": false }, // Filtro de búsqueda habilitado para la columna de Id
+          null, // Filtro de búsqueda habilitado para la columna de Título
+          { "searchable": false }, // Filtro de búsqueda habilitado para la columna de Imagen
+          null, // Filtro de búsqueda habilitado para la columna de Descripción corta
+          null, // Filtro de búsqueda deshabilitado para la columna de Género
+          null, // Filtro de búsqueda deshabilitado para la columna de Plataforma
+        ]
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="nav navbar-nav">
+        <a class="nav-item nav-link active" href="{% url 'helloUPDS' %}" aria-current="page">Proyecto Django</a>
+        <a class="nav-item nav-link" href="{% url 'projectIndex' %}">Porftolio</a>
+        <a class="nav-item nav-link" href="{% url 'api' %}">API</a>
+    </div>
+</nav>
+<h1>Portfolio</h1>
+<div class="row">
+    {% for proyecto in proyectos %}
+        <div class="col-md-4">
+            <div class="card mb-2">
+                <img class="card-img-top" src="{% static proyecto.imagen %}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ proyecto.titulo }}</h5>
+                    <p class="card-text">{{ proyecto.descripcion }}</p>
+                    <a href="{% url 'projectDetail' proyecto.pk %}" class="btn btn-primary">Leer mas</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

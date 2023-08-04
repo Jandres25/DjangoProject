@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link active" href="{% url 'helloUPDS' %}" aria-current="page">Proyecto Django</a>
+            <a class="nav-item nav-link" href="{% url 'projectIndex' %}">Porftolio</a>
+            <a class="nav-item nav-link" href="{% url 'api' %}">API</a>
+        </div>
+    </nav>
+    <h1>{{ proyecto.titulo }}</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <img src="{% static proyecto.imagen %}" alt="" width="100%">
+        </div>
+        <div class="col-md-4">
+            <h5>Sobre el Proyecto:</h5>
+            <p>{{ proyecto.descripcion }}</p>
+            <br>
+            <h5>Tecnologias usadas:</h5>
+            <p>{{ proyecto.tecnologias }}</p>
+        </div>
+    </div>
+{% endblock %}
