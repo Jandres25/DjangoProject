@@ -1,0 +1,11 @@
+# Ignorar archivos de caché de Django
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyi
+*.pyc/
+*.pyo/
+*.pyd/
+*.pyi/
+*.egg-info/
