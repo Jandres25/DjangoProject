@@ -1,0 +1,63 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+A Django 4.2.3 web application with three apps, using Python 3.8.10 inside a virtualenv (`proyectodjango/`). The Django project root is `myproject/` (contains `manage.py`).
+
+## Commands
+
+All commands must be run from `myproject/` after activating the virtualenv:
+
+```bash
+# Activate virtual environment (from repo root)
+source proyectodjango/Scripts/activate   # Windows-style venv on Linux
+# or
+source proyectodjango/bin/activate
+
+# Run dev server
+cd myproject
+python manage.py runserver
+
+# Apply migrations
+python manage.py migrate
+
+# Create new migrations after model changes
+python manage.py makemigrations
+
+# Run tests
+python manage.py test
+
+# Run tests for a single app
+python manage.py test helloUPDS
+python manage.py test portfolio
+python manage.py test api
+
+# Open Django shell
+python manage.py shell
+```
+
+## Architecture
+
+Three Django apps mounted at:
+
+| App         | URL prefix    | Purpose                                              |
+| ----------- | ------------- | ---------------------------------------------------- |
+| `helloUPDS` | `/`           | Home/landing page                                    |
+| `portfolio` | `/portfolio/` | Portfolio projects from SQLite DB                    |
+| `api`       | `/api/`       | Displays paginated data from external FreeToGame API |
+
+### Data flow
+
+- **portfolio**: `Proyecto` model (titulo, descripcion, tecnologias, link, imagen) stored in `db.sqlite3`. Views: `projectIndex` (list all), `projectDetail` (single by PK).
+- **api**: No local model — fetches live data from `https://www.freetogame.com/api/games` via `requests`, paginates results (10/page) and renders them.
+- **helloUPDS**: Static landing page, no model.
+
+### Templates
+
+Each app has its own `templates/` directory. The global `TEMPLATES['DIRS']` also points to `helloUPDS/templates/`, so `base.html` and `baseapi.html` are shared base templates.
+
+### Database
+
+SQLite at `myproject/db.sqlite3`. Only `portfolio` has a migration (`0001_initial`). The `api` app has no models.

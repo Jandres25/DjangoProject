@@ -1,11 +1,49 @@
-# Ignorar archivos de caché de Django
+# =====================
+# Python
+# =====================
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.pyi
-*.pyc/
-*.pyo/
-*.pyd/
-*.pyi/
+*.py[cod]
 *.egg-info/
+*.egg
+
+# =====================
+# Django
+# =====================
+*.sqlite3
+*.log
+/myproject/staticfiles/
+/myproject/media/
+local_settings.py
+
+# =====================
+# Entorno virtual
+# =====================
+proyectodjango/
+
+# =====================
+# IDEs — IntelliJ / PyCharm
+# =====================
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# =====================
+# IDEs — VSCode
+# =====================
+.vscode/
+
+# =====================
+# IDEs — Eclipse
+# =====================
+.project
+.pydevproject
+.settings/
+
+# =====================
+# Sistema operativo
+# =====================
+.DS_Store
+Thumbs.db
+desktop.ini
