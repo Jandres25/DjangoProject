@@ -1,19 +1,40 @@
 {% extends "base.html" %}
+{% block title %}Inicio — Proyecto Django{% endblock %}
 {% block page_content %}
 
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-    <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="{% url 'helloUPDS' %}" aria-current="page">Proyecto Django</a>
-        <a class="nav-item nav-link" href="{% url 'projectIndex' %}">Porftolio</a>
-        <a class="nav-item nav-link" href="{% url 'api' %}">API</a>
-    </div>
-</nav>
+<div class="jumbotron jumbotron-fluid mb-0">
+  <div class="container">
+    <h1 class="display-4 font-weight-bold">Proyecto Django</h1>
+    <p class="lead">Aplicación web desarrollada con <strong>Django 4.2</strong> y <strong>Bootstrap 4</strong>.
+      Incluye un portfolio de proyectos almacenados en base de datos y una vista de consumo
+      de API Rest externa.</p>
+    <hr class="my-4">
+    <p class="text-muted">Python 3 &bull; SQLite &bull; FreeToGame API &bull; DataTables</p>
+  </div>
+</div>
 
-<div class="p-5 mb-4 bg-light rounded-3">
-  <div class="container-fluid py-5">
-    <h1 class="display-5 fw-bold">¡¡¡Hola UPDS!!!</h1>
-    <p class="col-md-8 fs-4">Utilizando una serie de utilidades, puedes crear este jumbotrón, igual que el de versiones anteriores de Bootstrap. Echa un vistazo a los ejemplos a continuación para ver cómo puedes remezclarlo y reestilizarlo a tu gusto.</p>
-    <button class="btn btn-primary btn-lg" type="button">Boton de ejemplo</button>
+<div class="container my-4">
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">&#128193; Portfolio</h5>
+          <p class="card-text">Explora los proyectos almacenados en la base de datos SQLite, con imágenes,
+            descripciones y tecnologías usadas.</p>
+          <a href="{% url 'projectIndex' %}" class="btn btn-primary">Ver Portfolio</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-3">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">&#127918; Catálogo de Videojuegos</h5>
+          <p class="card-text">Datos obtenidos en tiempo real desde la API de FreeToGame.
+            Búsqueda integrada con DataTables y paginación.</p>
+          <a href="{% url 'api' %}" class="btn btn-primary">Ver API</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

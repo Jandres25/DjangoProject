@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A Django 4.2.3 web application with three apps, using Python 3.8.10 inside a virtualenv (`proyectodjango/`). The Django project root is `myproject/` (contains `manage.py`).
+A Django 4.2.3 web application with three apps, using Python 3.12+ inside a virtualenv (`proyectodjango/`). The Django project root is `myproject/` (contains `manage.py`).
 
 ## Commands
 
@@ -12,8 +12,6 @@ All commands must be run from `myproject/` after activating the virtualenv:
 
 ```bash
 # Activate virtual environment (from repo root)
-source proyectodjango/Scripts/activate   # Windows-style venv on Linux
-# or
 source proyectodjango/bin/activate
 
 # Run dev server
@@ -56,7 +54,11 @@ Three Django apps mounted at:
 
 ### Templates
 
-Each app has its own `templates/` directory. The global `TEMPLATES['DIRS']` also points to `helloUPDS/templates/`, so `base.html` and `baseapi.html` are shared base templates.
+Each app has its own `templates/` directory. The global `TEMPLATES['DIRS']` also points to `helloUPDS/templates/`, so `base.html` is the shared base template used by all apps.
+
+- `base.html` — full HTML structure with navbar, footer, Bootstrap 4.6.2, jQuery 3.7.1, Popper.js 1.16.1
+- `baseapi.html` — extends `base.html`, adds DataTables 1.13.6 (Bootstrap 4 integration)
+- Child templates use `{% block page_content %}` and optionally `{% block extra_css %}` / `{% block extra_js %}`
 
 ### Database
 
